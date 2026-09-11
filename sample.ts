@@ -34,8 +34,9 @@ type TOrderProp = { id: number; name: string; hasCoupon: boolean };
 const orderRes1 = createOrder<TOrderProp>(customer1);
 const orderRes2 = createOrder<TOrderProp & { moneyBag: number }>(customer2);
 
-console.log({ orderRes1, orderRes2 });
+// console.log({ orderRes1, orderRes2 });
 
+//****************** */ keyof ****************************
 type FoodManu = {
   burger: string;
   pizza: string;
@@ -44,3 +45,30 @@ type FoodManu = {
 
 const myFavFood1: "burger" | "pizza" | "puchka" = "pizza";
 const myFavFood: keyof FoodManu = "pizza";
+
+const getAnyObjValue = <T>(obj: T, key: keyof T) => {
+  return obj[key];
+};
+const user1 = {
+  name: "Towhid",
+  age: 32,
+  role: "admin",
+};
+type TUser1 = {
+  name:string,
+  age: number,
+  role: string
+}
+const product = {
+  brand: "Toyota ",
+  modelYear: 1950,
+};
+type TProduct = {
+  brand: string,
+  modelYear: number,
+};
+const value = getAnyObjValue<TUser1>(
+  user1,
+  'age',
+);
+console.log(value);
